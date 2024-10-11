@@ -7,17 +7,15 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Surface
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.material3.Button
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.platform.LocalContext
 
 class SecondActivity : ComponentActivity() {
@@ -27,8 +25,15 @@ class SecondActivity : ComponentActivity() {
             SecondActivityApp()
         }
     }
-}
 
+    // This method will handle the intent when the SecondActivity is started
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        if (intent?.action == "com.example.assignment2.START_SECOND_ACTIVITY") {
+            // Handle any specific logic if needed for the implicit intent
+        }
+    }
+}
 
 @Preview
 @Composable
@@ -38,18 +43,18 @@ fun SecondActivityApp() {
 
 @Composable
 fun SecondActivityTextAndButton(modifier: Modifier = Modifier) {
-    //for calling MainActivity in button
     val context = LocalContext.current
 
-    Column (
+    Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text("Device Fragmentation\n" +
-                "OS Fragmentation\n" +
-                "Unstable and Dynamic Environment\n" +
-                "Rapid Changes\n" +
-                "Tool Support\n")
+        Text("Mobile Software Engineering Challenges:\n" +
+                "1. Device Fragmentation\n" +
+                "2. OS Fragmentation\n" +
+                "3. Unstable and Dynamic Environment\n" +
+                "4. Rapid Changes\n" +
+                "5. Tool Support\n")
 
         Spacer(modifier = Modifier.padding(12.dp))
 

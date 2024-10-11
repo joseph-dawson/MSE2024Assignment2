@@ -7,17 +7,16 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.assignment2.ui.theme.Assignment2Theme
 import androidx.compose.ui.unit.dp
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.material3.Button
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.res.stringResource
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.wrapContentSize
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,6 +48,7 @@ class MainActivity : ComponentActivity() {
             Spacer(modifier = Modifier.padding(12.dp))
 
             Button(onClick = {
+                // Explicit intent to start SecondActivity
                 val intent = Intent(this@MainActivity, SecondActivity::class.java)
                 startActivity(intent)
             }) {
@@ -56,8 +56,9 @@ class MainActivity : ComponentActivity() {
             }
 
             Button(onClick = {
-                val intent = Intent()
-                intent.setClassName(this@MainActivity, SecondActivity::class.java.name)
+                // Implicit intent to start SecondActivity
+                val intent = Intent("com.example.assignment2.START_SECOND_ACTIVITY")
+                intent.setPackage(packageName) // Optional: restrict to your app
                 startActivity(intent)
             }) {
                 Text("Start activity implicitly")
